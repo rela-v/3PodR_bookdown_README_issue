@@ -30,6 +30,7 @@ renv::restore()
 ```r
 rmarkdown::render_site(encoding = 'UTF-8')
 ```
+OR you may alternatively, in Rstudio, press the button `Build Book` in the upper right-hand pane.
 
 ## Troubleshooting
 To troubleshoot 3podR, use the following steps:
