@@ -17,7 +17,7 @@ Once built, the template files are rendered producing the following analyses:
 3. Gene Ontology (GO) pathway analysis (like in (#2)) via EnrichR, also summarized using PAVER.
 4. A table of concordant and discordant drugs, derived from querying iLINCS with the input gene signature, and a separate table counting the most common mechanisms of action.
 
-## Installation
+## Installation & Usage
 To install 3podR, perform the following steps:
 
 1. Clone the repository via `git clone https://github.com/willgryan/3PodR_bookdown.git`.
@@ -26,11 +26,19 @@ To install 3podR, perform the following steps:
 ```r 
 renv::restore()
 ```
-4. Once all packages have been installed, you may try to render the report with the template data and default settings via the command:
+5. Once all packages have been installed, you may use 3PodR. There are two main steps in this process.
+I. You should include your input differential gene expression file by copying your input file to the extdata/ folder (e.g. `extdata/YOUR_DGE_FILE.csv`). Your input file must have the following properties:
+- It must be in CSV format.
+- It must have 3 columns, in this exact order: 1) Gene Symbols, 2) Log2 Fold Change, 3) P-values.
+II. You should, at this point, edit the extdata/configuration.yml file. To do this, you *must* make the following changes:
+- If you are not interested in plotting expression/count-data based-data, then you must comment out the lines that include the `design.csv` and `counts.csv` files. In this case, you may name the groups in your data block whatever you like.
+- If you are, your group names must match those that are within the design file.
+- You must replace the name of the `file` variable (by default, this is set as `file: "DAvsCA.csv"`, or `file: "DBvsCB.csv"`) to match that of your input file (e.g. `file: "YOUR_INPUT_FILE.csv"`
+6. Now that your input file has been included and the configuration.yml file has been edited, you may generate a report. To render the report with these new settings, you may input the following command:
 ```r
 rmarkdown::render_site(encoding = 'UTF-8')
 ```
-OR you may alternatively, in Rstudio, press the button `Build Book` in the upper right-hand pane.
+OR you may alternatively, in Rstudio, press the button `Build Book` (sometimes called as `Build Website`) in the upper right-hand pane under the "Build" tab.
 
 ## Troubleshooting
 To troubleshoot 3podR, use the following steps:
