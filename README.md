@@ -26,7 +26,7 @@ To install 3podR, perform the following steps:
 ```r 
 renv::restore()
 ```
-5. Once all packages have been installed, you may use 3PodR. There are two main steps in this process.
+4. Once all packages have been installed, you may use 3PodR. There are two main steps in this process.
 I. You should include your input differential gene expression file by copying your input file to the extdata/ folder (e.g. `extdata/YOUR_DGE_FILE.csv`). Your input file must have the following properties:
 - It must be in CSV format.
 - It must have 3 columns, in this exact order: 1) Gene Symbols, 2) Log2 Fold Change, 3) P-values.
@@ -34,7 +34,7 @@ II. You should, at this point, edit the extdata/configuration.yml file. To do th
 - If you are not interested in plotting expression/count-data based-data, then you must comment out the lines that include the `design.csv` and `counts.csv` files. In this case, you may name the groups in your data block whatever you like.
 - If you are, your group names must match those that are within the design file.
 - You must replace the name of the `file` variable (by default, this is set as `file: "DAvsCA.csv"`, or `file: "DBvsCB.csv"`) to match that of your input file (e.g. `file: "YOUR_INPUT_FILE.csv"`
-6. Now that your input file has been included and the configuration.yml file has been edited, you may generate a report. To render the report with these new settings, you may input the following command:
+5. Now that your input file has been included and the configuration.yml file has been edited, you may generate a report. To render the report with these new settings, you may input the following command:
 ```r
 rmarkdown::render_site(encoding = 'UTF-8')
 ```
